@@ -1,6 +1,9 @@
-<div class="comment" data-id="<%= comment.id %>">
-  <p><%= comment.body %></p>
-  <label style="font-size: x-small"><%= "Posted " + time_ago_in_words(comment.created_at) + " ago" %></label> <br/>
-  <%= link_to "Edit comment", edit_comment_path(comment), class: "button tiny"%>
-  <%= link_to "Delete comment", comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: "button tiny" %>
+<div class="panel">
+  <div class="comment" data-id="<%= comment.id %>">
+    <label style="font-weight: bold"><%= comment.user.login %></label>
+    <p><%= comment.body %></p>
+    <label style="font-size: x-small"><%= "Posted " + time_ago_in_words(comment.created_at) + " ago" %></label>
+    <%= link_to "Edit comment", edit_comment_path(comment), style:"font-size: x-small"%> |
+    <%= link_to "Delete comment", comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, style:"font-size: x-small" %>
+  </div>
 </div>

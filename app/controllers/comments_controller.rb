@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :set_post, only: [:index, :create, :new]
+  before_action :authenticate_user!, except: [:show, :index]
 
   # GET /comments
   # GET /comments.json
@@ -26,6 +27,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = @post.comments.build(comment_params)
+    @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
         format.html { redirect_to post_path(@post), notice: 'Comment was successfully created.' }

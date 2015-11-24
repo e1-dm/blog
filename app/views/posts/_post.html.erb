@@ -1,0 +1,7 @@
+<div style="" class="post" data-id="<%= post.id %>">
+  <h3><%= link_to post.title, post %></h3>
+  <p><%= post.body[0,50] + "..." %></p>
+  <label style="font-size: x-small"><%= "Posted " + time_ago_in_words(post.created_at) + " ago" %></label> <br/>
+  <%= link_to "Edit post", edit_post_path(post), style:"font-size: small"%> |
+  <%= link_to "Delete post", post, method: :delete, data: { confirm: 'Are you sure?' }, style:"font-size: small" %>
+</div>
