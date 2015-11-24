@@ -1,0 +1,9 @@
+<div class="row">
+  <h1>Listing comments</h1>
+  <%= link_to 'New Comment', new_post_comment_path, class:"button tiny"%> <br/>
+  <% @comments.each do |comment| %>
+      <%= render comment %>
+  <% end %>
+</div>
+
+
