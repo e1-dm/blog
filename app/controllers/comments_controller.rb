@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :set_post, only: [:index, :create, :new]
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :check_permission, only: [:edit, :update, :delete, :destroy]
 
   # GET /comments
   # GET /comments.json
@@ -32,10 +33,8 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to post_path(@post), notice: 'Comment was successfully created.' }
         format.js {  }
-        format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -73,6 +72,13 @@ class CommentsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:post_id])
+  end
+
+  def check_permission
+    #@comment = Comment.find(params[:id])
+    if current_user != @comment.user
+      redirect_to post_path(@comment.post), notice: "You don't have permission!"
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
