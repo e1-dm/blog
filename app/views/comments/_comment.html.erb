@@ -3,11 +3,9 @@
     <label style="font-weight: bold"><%= comment.user.login %></label>
     <p><%= comment.body %></p>
     <label style="font-size: x-small"><%= "Posted " + time_ago_in_words(comment.created_at) + " ago" %></label>
-    <% if user_signed_in? %>
-        <% if current_user == comment.user %>
-            <%= link_to "Edit comment", edit_comment_path(comment), style:"font-size: x-small"%> |
-            <%= link_to "Delete comment", comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, style:"font-size: x-small" %>
-        <% end %>
+    <% if user_signed_in? && CommentsPolicy.new(current_user, comment).edit? %>
+        <%= link_to "Edit comment", edit_comment_path(comment), style:"font-size: x-small"%> |
+        <%= link_to "Delete comment", comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, style:"font-size: x-small" %>
     <% end %>
   </div>
 </div>
