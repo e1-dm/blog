@@ -1,5 +1,12 @@
-<div style="" class="post" data-id="<%= post.id %>">
-  <h3><%= link_to post.title, post %></h3>
-  <label style="font-size: x-small">Comments: <%= post.comments.count %></label>
-  <label style="font-size: x-small"><%= "Posted " + time_ago_in_words(post.created_at) + " ago by " + post.user.login %></label> <br/>
+<div style="width: 100%;" class="post" data-id="<%= post.id %>">
+  <table style="border: hidden">
+    <tr>
+      <td><%= image_tag post.image.thumb.url %></td>
+      <td>
+        <h3><%= link_to post.title, post %></h3>
+        <label style="font-size: x-small">Comments: <%= post.comments.count %></label>
+        <label style="font-size: x-small"><%= "Posted " + time_ago_in_words(post.created_at) + " ago by " + post.user.login %></label> <br/>
+      </td>
+    </tr>
+  </table>
 </div>

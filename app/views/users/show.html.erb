@@ -1,0 +1,17 @@
+<div class="medium-6 columns" style="height: 100%; width: 15%;">
+  <!-- here must be image for profile -->
+  <img src="https://d13yacurqjgara.cloudfront.net/users/124355/screenshots/2199042/profile_1x.png">
+  <h5 style="text-align: center"><%= @user.login %></h5>
+</div>
+
+<div class="medium-6 columns" style="height: 100%; width: 85%">
+  <% if @posts.any? %>
+      <% @posts.each do |post| %>
+          <%= render post %>
+      <% end %>
+  <% else %>
+      <h1>Seems like <%=@user.login%> has no posts yet :(</h1>
+  <% end %>
+</div>
+
+

@@ -33,6 +33,8 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+
+  #config.action_controller.asset_host = "https://s3-us-west-2.amazonaws.com/e1-blog-test"
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

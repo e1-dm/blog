@@ -1,9 +1,11 @@
 <div class="row">
   <h1><%= @post.title %></h1>
+  <label style="font-size: x-small; font-weight: bold">by <%= link_to @post.user.login, user_path(@post.user) %></label> <br>
+  <%= image_tag @post.image.url %>
   <p>
     <%= @post.body %>
   </p>
-  <% if current_user == @post.user %>
+  <% if user_signed_in? && PostsPolicy.new(current_user, @post).access? %>
       <%= link_to 'Edit', edit_post_path(@post), style:"font-size: small" %> |
       <%= link_to "Delete post", @post, method: :delete, data: { confirm: 'Are you sure?' }, style:"font-size: small" %> |
   <% end %>

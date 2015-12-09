@@ -32,7 +32,13 @@ gem 'foundation-rails'
 
 gem 'slim-rails'
 
+gem "figaro"
 
+gem 'mini_magick'
+gem 'carrierwave-imageoptimizer'
+
+gem 'carrierwave-aws'
+gem 'aws-sdk'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

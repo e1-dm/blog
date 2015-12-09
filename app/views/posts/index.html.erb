@@ -1,6 +1,5 @@
 <div class="row">
   <h1>Latest posts</h1>
-  <%= link_to 'New Post', new_post_path, class: "button tiny"%>
   <% @posts.reverse.each do |post| %>
       <%= render post %>
   <% end %>

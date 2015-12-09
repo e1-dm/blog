@@ -35,6 +35,9 @@
 
     <!-- Left Nav Section -->
     <ul class="left">
+      <% if user_signed_in? %>
+        <li><%= link_to "My posts", user_path(current_user) %></li>
+      <% end %>
       <li><%=link_to "New post", new_post_path %></li>
     </ul>
   </section>
