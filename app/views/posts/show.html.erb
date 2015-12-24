@@ -1,7 +1,7 @@
 <div class="row">
   <h1><%= @post.title %></h1>
   <label style="font-size: x-small; font-weight: bold">by <%= link_to @post.user.login, user_path(@post.user) %></label> <br>
-  <%= image_tag @post.image.url %>
+  <%= image_tag @post.image.normal.url %>
   <p>
     <%= @post.body %>
   </p>
@@ -12,7 +12,7 @@
   <%= link_to 'Back', posts_path, style:"font-size: small" %>
 
   <h3>Comments</h3>
-  <div class="new-comment">
+  <div class="newcomment">
     <%= render 'comments/form' %>
   </div>
   <div class="comments">

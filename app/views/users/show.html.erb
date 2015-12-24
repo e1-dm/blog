@@ -6,7 +6,7 @@
 
 <div class="medium-6 columns" style="height: 100%; width: 85%">
   <% if @posts.any? %>
-      <% @posts.each do |post| %>
+      <% @posts.reverse.each do |post| %>
           <%= render post %>
       <% end %>
   <% else %>
